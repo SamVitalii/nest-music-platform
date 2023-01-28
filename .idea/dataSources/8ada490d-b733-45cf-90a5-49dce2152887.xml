@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="nest-music-platform@cluster0.tkoq52q.mongodb.net">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.45">
+    <root id="1">
+      <ServerVersion>5.0.14</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="nest-music-platform">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="admin"/>
+    <schema id="4" parent="1" name="local"/>
+    <table id="5" parent="2" name="comments"/>
+    <table id="6" parent="2" name="tracks"/>
+    <column id="7" parent="5" name="_id">
+      <DasType>ObjectId|12s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="8" parent="5" name="text">
+      <DasType>String|12s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="9" parent="5" name="username">
+      <DasType>String|12s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="10" parent="5" name="__v">
+      <DasType>Int32|4s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="11" parent="6" name="_id">
+      <DasType>ObjectId|12s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="12" parent="6" name="__v">
+      <DasType>Int32|4s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="13" parent="6" name="text">
+      <DasType>String|12s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="14" parent="6" name="artist">
+      <DasType>String|12s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="15" parent="6" name="audio">
+      <DasType>String|12s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="16" parent="6" name="comments">
+      <DasType>list|4999545s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="17" parent="6" name="listens">
+      <DasType>Int32|4s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="18" parent="6" name="name">
+      <DasType>String|12s</DasType>
+      <Position>7</Position>
+    </column>
+    <column id="19" parent="6" name="picture">
+      <DasType>String|12s</DasType>
+      <Position>8</Position>
+    </column>
+  </database-model>
+</dataSource>

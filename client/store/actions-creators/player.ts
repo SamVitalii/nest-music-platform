@@ -13,7 +13,7 @@ export const setDuration = (payload: number): PlayerAction => {
     return { type: PlayerActionTypes.SET_DURATION, payload };
 };
 
-export const setActive = (payload: ITrack): PlayerAction => {
+export const setActiveTrack = (payload: ITrack): PlayerAction => {
     return { type: PlayerActionTypes.SET_ACTIVE, payload };
 };
 

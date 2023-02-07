@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { Track, TrackDocument } from "./schemas/track.schemas";
+import { Track, TrackDocument } from "./schemas/track.schema";
 import { Model, ObjectId } from "mongoose";
 import { Comment, CommentDocument } from "./schemas/comment.schema";
 import { CreateTrackDto } from "./dto/create-track.dto";

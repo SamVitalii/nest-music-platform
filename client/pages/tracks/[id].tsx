@@ -65,7 +65,7 @@ const TrackPage = ({ serverTrack }: any) => {
                 <Button onClick={addComment}>Send comment</Button>
             </Grid>
             <div>
-                {track.comments.map((comment: IComment) =>
+                {track?.comments?.map((comment: IComment) =>
                     <div>
                         <div>Author: {comment.username}</div>
                         <div>Comment: {comment.text}</div>

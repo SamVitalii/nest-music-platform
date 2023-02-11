@@ -13,17 +13,10 @@ const Index = () => {
     const { tracks, error } = useTypedSelector(state => state.track);
     const [query, setQuery] = useState<string>("");
     const dispatch = useDispatch() as NextThunkDispatch;
-    const [timer, setTimer] = useState("");
 
     const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(e.target.value);
-        if (timer) clearTimeout(timer);
-        setTimer(
-            // @ts-ignore
-            setTimeout(async () => {
-                await dispatch(await searchTracks(e.target.value));
-            }, 500)
-        );
+        await dispatch(await searchTracks(e.target.value));
     };
 
     if (error) {

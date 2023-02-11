@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 const Create = () => {
     const [activeStep, setActiveStep] = useState(0);
     const [picture, setPicture] = useState(""); //null
-    const [audio, setAudio] = useState(""); //null
+    const [audio, setAudio] = useState("");
     const name = userInput("");
     const artist = userInput("");
     const text = userInput("");
@@ -26,9 +26,6 @@ const Create = () => {
             formData.append("text", text.value);
             formData.append("picture", picture);
             formData.append("audio", audio);
-            // axios.post("http://localhost:8000/tracks", formData)
-            //     .then(res => router.push('/tracks'))
-            //     .catch(e => console.log(e));
 
             try {
                 await axios.post("http://localhost:8000/tracks", formData);

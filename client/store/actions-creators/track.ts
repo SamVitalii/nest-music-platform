@@ -6,7 +6,6 @@ export const fetchTracks = () => {
     return async (dispatch: Dispatch<TrackAction>) => {
         try {
             const response = await axios.get("http://localhost:8000/tracks");
-            dispatch({ type: TrackActionTypes.FETCH_TRACKS, payload: response.data });
         } catch (e) {
             dispatch({
                 type: TrackActionTypes.FETCH_TRACKS_ERROR,

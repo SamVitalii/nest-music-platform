@@ -30,7 +30,7 @@ const TrackItem = ({ trackId, active = false }: TrackItemProps) => {
 
         setActiveTrack(currentTrack);
         playTrack();
-    };
+    }
 
     async function deleteTrack() {
         try {

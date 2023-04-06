@@ -14,7 +14,7 @@ const TrackList = ({ tracks }: TrackListProps) => {
                 {tracks.map(track =>
                     <TrackItem
                         key={track._id}
-                        trackId={track._id}
+                        track={track}
                     />)}
             </Box>
         </Grid>

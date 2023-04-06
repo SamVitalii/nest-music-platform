@@ -1,10 +1,10 @@
-import React from "react";
-
 interface TrackProgressProps {
     left: number;
     right: number;
     onChange: (e: any) => void;
 }
+
+const fmtMSS = (s: number) => (s - (s %= 60)) / 60 + (9 < s ? ":" : ":0") + s;
 
 const TrackProgress = ({ left, right, onChange }: TrackProgressProps) => {
     return (
@@ -16,7 +16,10 @@ const TrackProgress = ({ left, right, onChange }: TrackProgressProps) => {
                 value={left}
                 onChange={onChange}
             />
-            <div>{left} / {right}</div>
+            {(right !== 100)
+                ? <div>{fmtMSS(left)} / {fmtMSS(right)}</div>
+                : <div>{left}%</div>
+            }
         </div>
     );
 };

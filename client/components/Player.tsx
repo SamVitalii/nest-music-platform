@@ -10,10 +10,8 @@ let audio: any;
 
 const Player = () => {
     const { pause, active, volume, duration, currentTime } = useTypedSelector(state => state.player);
-    const { playTrack, pauseTrack, setVolume, setCurrentTime, setDuration, setActiveTrack } = useActions();
+    const { playTrack, pauseTrack, setVolume, setCurrentTime, setDuration } = useActions();
 
-    //function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
-    //<TrackProgress left={String(volume)} right={String(100)} onChange={changeVolume} />
 
     useEffect(() => {
         if (!audio) {
@@ -28,7 +26,7 @@ const Player = () => {
         if (active) {
             audio.src = "http://localhost:8000/" + active.audio;
             audio.volume = volume / 100;
-            audio.onloadeddata = () => {
+            audio.onloadedmetadata = () => {
                 setDuration(Math.ceil(audio.duration));
             };
             audio.ontimeupdate = () => {
@@ -54,7 +52,7 @@ const Player = () => {
 
     const changeCurrentTime = (e: React.ChangeEvent<HTMLInputElement>) => {
         audio.currentTime = Number(e.target.value);
-        setVolume(Number(e.target.value));
+        setCurrentTime(Number(e.target.value));
     };
 
     if (!active) {

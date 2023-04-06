@@ -7,34 +7,31 @@ import { playTrack } from "@/store/actions-creators/player";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import axios from "axios";
-import Image from "next/image";
+import { ITrack } from "@/types/track";
 
 interface TrackItemProps {
-    trackId: string;
+    track: ITrack;
     active?: boolean;
 }
 
-//TODO normal pausing
-const TrackItem = ({ trackId, active = false }: TrackItemProps) => {
+const TrackItem = ({ track, active = false }: TrackItemProps) => {
     const router = useRouter();
     const { duration, currentTime } = useTypedSelector(state => state.player);
-    const { tracks } = useTypedSelector(state => state.track);
-    const { playTrack, pauseTrack, setActiveTrack } = useActions();
+    const { playTrack, setActiveTrack } = useActions();
 
-    const currentTrack = tracks.find(track => track._id === trackId) || null;
 
-    function play() {
-        if (!currentTrack) {
+    function play(e: any) {
+        if (!track) {
             return;
         }
-
-        setActiveTrack(currentTrack);
+        e.stopPropagation();
+        setActiveTrack(track);
         playTrack();
     }
 
     async function deleteTrack() {
         try {
-            await axios.delete(`http://localhost:8000/tracks/${currentTrack?._id}`);
+            await axios.delete(`http://localhost:8000/tracks/${track?._id}`);
             window.location.reload();
         } catch (e) {
             console.log(e);
@@ -42,14 +39,14 @@ const TrackItem = ({ trackId, active = false }: TrackItemProps) => {
     }
 
     return (
-        <Card className={styles.track} onClick={() => router.push("/tracks/" + currentTrack?._id)}>
+        <Card className={styles.track} onClick={() => router.push("/tracks/" + track?._id)}>
             <IconButton onClick={play}>
                 {active ? <Pause /> : <PlayArrow />}
             </IconButton>
-            <Image width={70} height={70} src={"http://localhost:8000/" + currentTrack?.picture} alt="Image" />
+            <img width={70} height={70} src={"http://localhost:8000/" + track?.picture} alt={":3"} />
             <Grid container direction="column" style={{ width: 200, margin: "0 20px" }}>
-                <div>{currentTrack?.name}</div>
-                <div style={{ fontSize: 12, color: "gray" }}>{currentTrack?.artist}</div>
+                <div>{track?.name}</div>
+                <div style={{ fontSize: 12, color: "gray" }}>{track?.artist}</div>
             </Grid>
             {active && <div>{currentTime} / {duration}</div>}
             <IconButton onClick={deleteTrack} style={{ marginLeft: "auto" }}>

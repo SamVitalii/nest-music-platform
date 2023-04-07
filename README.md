@@ -10,11 +10,19 @@ their opinions in the comments. The application is built using Nest.js for the b
    ```bash
    git clone https://github.com/SamVitalii/nest-music-platform.git
    ```
-
-2. Install dependencies and run:
    ```bash
    cd nest-music-platform
    ```
+
+2. Create a `.env` file in the root directory of the project and add the following environment variables:
+   ```bash
+   MONGO_USER=<your-user>
+   MONGO_PASSWORD=<your-password>
+   MONGO_DEFAULT_DATABASE=<your-music-platform-database>
+   PORT=8000
+   ```
+
+3. Install dependencies and run:
 
   * For server side:
      ```bash
